@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+template<class T>
+void selectionSort(T A[],int n){
+    for(int i=0;i<n;i++){
+        int minindex=i;
+        for(int j=i+1;j<n;j++){
+            if(A[minindex]>A[j]){
+                minindex=j;
+            }
+        }
+        swap(A[i],A[minindex]);
+    }
+}
+template<class T>
+void display(T A[],int n){
+    for(int i=0;i<n;i++){
+        cout<<A[i]<<"\t";
+    }
+    cout<<endl;
+}
+
+int main(){
+    int intarray[]={45,89,12,34,23,8,5,18};
+    int intsize=sizeof(intarray)/sizeof(intarray[0]);
+    cout<<"Integer array before sorting"<<endl;
+    display(intarray,intsize);
+    selectionSort(intarray,intsize);
+    cout<<"Integer array after sorting:"<<endl;
+    display(intarray,intsize);
+
+    float floatarray[]={2.5,89.1,5.4,90.8,1.2,34.5,45.3,20.0};
+    int floatsize=sizeof(intarray)/sizeof(intarray[0]);
+    cout<<"Float array before sorting"<<endl;
+    display(floatarray,floatsize);
+    selectionSort(floatarray,floatsize);
+    cout<<"Float array after sorting:"<<endl;
+    display(floatarray,floatsize);
+
+    char chararray[]={'f','r','a','z','p','e','w'};
+    int charsize=sizeof(chararray)/sizeof(chararray[0]);
+    cout<<"Character array before sorting"<<endl;
+    display(chararray,charsize);
+    selectionSort(chararray,charsize);
+    cout<<"Character array after sorting:"<<endl;
+    display(chararray,charsize);
+
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
