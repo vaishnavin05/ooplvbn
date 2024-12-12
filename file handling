@@ -1,0 +1,23 @@
+#include<iostream>
+#include<fstream>
+#include<cstring>
+using namespace std;
+int main(){
+    ofstream out;
+    out.open("sample.txt");
+    out<<"Welcome to the world of programming"<<endl;
+    out<<"This is oop practicle program which perform file handling"<<endl;
+    out<<"Here we are writing data to the file"<<endl;
+    out.close();
+
+    string str;
+    ifstream in;
+    in.open("sample.txt");
+    while(in.eof()==0){
+        getline(in,str);
+        cout<<str<<endl;
+    }
+    in.close();
+    return 0;
+}
+
