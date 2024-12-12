@@ -1,0 +1,61 @@
+#include<iostream>
+#include<cstring>
+#include<vector>
+#include<algorithm>
+using namespace std;
+class personalRecords{
+    public:
+    string name;
+    string dob;
+    string phone;
+    personalRecords(string n,string d,string p){
+        name=n;
+        dob=d;
+        phone=p;
+
+    }
+    void display(){
+        cout<<"Name: "<<name;
+        cout<<"Dob:"<<dob;
+        cout<<"Phone no."<<phone<<endl;
+    }
+
+};
+int main(){
+    vector<personalRecords> records;
+    
+    records.emplace_back("atul","12-7-2000","123456");
+    records.emplace_back("rahul","12-7-2000","123456");
+    records.emplace_back("divya","12-7-2000","123456");
+    records.emplace_back("pooja","12-7-2000","123456");
+    records.emplace_back("raj","12-7-2000","123456");
+
+    sort(records.begin(), records.end(), [](const personalRecords& a, const personalRecords& b) {
+        return a.name < b.name;
+    });
+
+    cout<<"Sorted records"<<endl;
+    vector<personalRecords>:: iterator it;
+    for(it=records.begin();it!=records.end();it++){
+        it->display();
+    }
+
+    string name;
+    cout<<"Enter the name:";
+    cin>>name;
+
+    auto iter = find_if(records.begin(), records.end(), [&name](personalRecords& record) {
+        return record.name == name;
+    });
+
+    // Check if we found the record
+    if (iter != records.end()) {
+        cout << "\nRecord found:" << endl;
+        iter->display();
+    } else {
+        cout << "\nRecord with name " << name << " not found!" << endl;
+    }
+
+    return 0;
+}
+
