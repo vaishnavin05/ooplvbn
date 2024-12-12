@@ -1,0 +1,66 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+class Media{
+    protected:
+    string name;
+    int price;
+    public:
+    Media(string s,int p){
+        name=s;
+        price=p;
+    }
+
+    virtual void display()=0;
+};
+
+class Book:public Media{
+    int pages;
+    public:
+    Book(string s,int p,int page):Media(s,p){
+        pages=page;
+    }
+    void display(){
+        cout<<"Title:"<<name<<"\n"<<"price :"<<price<<"\n"<<"pages:"<<pages<<endl;
+        
+    }
+};
+
+class Tape:public Media{
+    int time;
+    public:
+    Tape(string s,int p,int t):Media(s,p){
+        time=t;
+    }
+    void display(){
+        cout<<"Title:"<<name<<"\n"<<"price :"<<price<<"\n"<<"play time:"<<time<<" minutes"<<endl;
+    }
+};
+int main(){
+    string title;
+    int price,pages,time;
+    cout<<"...Enter book details..."<<endl;
+    cout<<"Title: ";
+    cin>>title;
+    cout<<"price: ";
+    cin>>price;
+    cout<<"pages: ";
+    cin>>pages;
+    Book b1(title,price,pages);
+    cout<<"...Enter Tape details..."<<endl;
+    cout<<"Title: ";
+    cin>>title;
+    cout<<"price: ";
+    cin>>price;
+    cout<<"Play Time(min): ";
+    cin>>time;
+    Tape t1(title,price,time);
+    Media *list[2];
+    list[0]=&b1;
+    list[1]=&t1;
+    cout<<"...........BOOK..........."<<endl;
+    list[0]->display();
+    cout<<"..........TAPE..........."<<endl;
+    list[1]->display();
+    return 0;
+}
