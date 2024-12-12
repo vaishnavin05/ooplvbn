@@ -1,0 +1,31 @@
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+int main() {
+    // Create a map to store state names and their populations
+    map<string, long long> statePopulation;
+    // Initialize the map with some Indian states and their populations
+    statePopulation["Maharashtra"] = 112372972;
+    statePopulation["Uttar Pradesh"] = 199812341;
+    statePopulation["Bihar"] = 104099452;
+    statePopulation["West Bengal"] = 91276115;
+    statePopulation["Tamil Nadu"] = 72147030;
+    statePopulation["Karnataka"] = 61095297;
+    statePopulation["Gujarat"] = 60439692;
+    statePopulation["Rajasthan"] = 68548437;
+    statePopulation["Andhra Pradesh"] = 49577103;
+    statePopulation["Odisha"] = 41974218;
+    // Prompt the user to enter the name of a state
+    string stateName;
+    cout << "Enter the name of an Indian state: ";
+    getline(cin, stateName);
+    // Look up the population of the entered state
+    auto it = statePopulation.find(stateName);
+    if (it != statePopulation.end()) {
+        cout << "The population of " << stateName << " is " << it->second << "." << endl;
+    } else {
+        cout << "State not found. Please check the name and try again." << endl;
+    }
+    return 0;
+}
